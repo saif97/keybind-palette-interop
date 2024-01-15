@@ -1,5 +1,5 @@
 {
-  "name": "keybing-command-palette-interop",
+  "name": "keybind-palette-interop",
   "displayName": "keybind <> command palette",
   "description": "Enables the call of keyboard commands using command palette  ",
   "version": "0.0.1",
@@ -14,8 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "keybing-command-palette-interop.runKeybindCommand",
-        "title": "Run Keybind Command"
+        "command": "keybind-palette-interop.runKeybindCommand",
+        "title": "Run Keybind via Command palette"
       }
     ]
   },
