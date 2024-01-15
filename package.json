@@ -14,7 +14,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "keybing-command-palette-interop.helloWorld",
+        "command": "keybing-command-palette-interop.a",
         "title": "Hello World"
       }
     ]
