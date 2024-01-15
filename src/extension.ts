@@ -10,13 +10,16 @@ export function activate(context: vscode.ExtensionContext) {
   console.log(config);
 
   // Get the commands from the configuration
-  const commands = config.get("commands") as Array<{ id: string; message: string }>;
-  console.log(commands);
+  const commands = config.get("commands") as Array<{ id: string; title: string; keybind_id: string }>;
 
   // Register each command
   for (const command of commands) {
+    console.log(command);
+
     let disposable = vscode.commands.registerCommand(command.id, () => {
-      vscode.window.showInformationMessage(command.message);
+      console.log(command.keybind_id);
+
+      vscode.commands.executeCommand(command.keybind_id);
     });
 
     context.subscriptions.push(disposable);
