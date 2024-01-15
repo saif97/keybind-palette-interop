@@ -7,17 +7,14 @@ import * as vscode from "vscode";
 export function activate(context: vscode.ExtensionContext) {
   //Get the configuration for your extension
   const config = vscode.workspace.getConfiguration("keybing-command-palette-interop");
-  console.log(config);
 
   // Get the commands from the configuration
   const commands = config.get("commands") as Array<{ id: string; title: string; keybind_id: string }>;
 
   // Register each command
   for (const command of commands) {
-    console.log(command);
 
     let disposable = vscode.commands.registerCommand(command.id, () => {
-      console.log(command.keybind_id);
 
       vscode.commands.executeCommand(command.keybind_id);
     });
@@ -26,14 +23,14 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   // Register a static command that prompts the user to select a command
-  let disposable = vscode.commands.registerCommand("keybing-command-palette-interop.a", async () => {
-    const commandId = await vscode.window.showQuickPick(
-      commands.map((c) => c.id),
-      { placeHolder: "Select a command" }
-    );
-    if (commandId) {
-      vscode.commands.executeCommand(commandId);
-    }
+  let disposable = vscode.commands.registerCommand("keybing-command-palette-interop.runKeybindCommand", async () => {
+	const commandId = await vscode.window.showQuickPick(
+		commands.map((c) => ({ label: c.title, id: c.id })),
+		{ placeHolder: "Select a command" }
+	  );
+	  if (commandId) {
+		vscode.commands.executeCommand(commandId.id);
+	  }
   });
 
   context.subscriptions.push(disposable);
