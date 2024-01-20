@@ -13,15 +13,12 @@ function registerExtensionCommands(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerCommand("keybind-palette-interop.runKeybindCommand", async () => {
     let commands = getCommands();
 
-    const commandId = await vscode.window.showQuickPick(
-      commands.map((c) => ({ label: c.title, id: c.id })),
+    const selectedCommand = await vscode.window.showQuickPick(
+      commands.map((c) => ({ label: c.title, id: c.keybind_id })),
       { placeHolder: "Select a command" }
     );
-    if (commandId) {
-      let selectedCommand = commands.find((c) => c.id === commandId.id);
-      console.log(`Command id ${commandId.id}`);
-
-      vscode.commands.executeCommand(selectedCommand!.keybind_id);
+    if (selectedCommand) {
+      vscode.commands.executeCommand(selectedCommand!.id);
     }
   });
 
