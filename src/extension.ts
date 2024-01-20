@@ -5,17 +5,14 @@ import * as vscode from "vscode";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  const config = vscode.workspace.getConfiguration("keybind-palette-interop");
-
-  const commands = config.get("commands") as Array<Command>;
-
-  //registerSubCommands(context, commands);
-  registerExtensionCommands(context, commands);
+  registerExtensionCommands(context);
 }
 
-function registerExtensionCommands(context: vscode.ExtensionContext, commands: Array<Command>) {
+function registerExtensionCommands(context: vscode.ExtensionContext) {
   // Register a static command that prompts the user to select a command
   let disposable = vscode.commands.registerCommand("keybind-palette-interop.runKeybindCommand", async () => {
+    let commands = getCommands();
+
     const commandId = await vscode.window.showQuickPick(
       commands.map((c) => ({ label: c.title, id: c.id })),
       { placeHolder: "Select a command" }
@@ -29,6 +26,11 @@ function registerExtensionCommands(context: vscode.ExtensionContext, commands: A
   });
 
   context.subscriptions.push(disposable);
+}
+
+function getCommands(): Array<Command> {
+  const config = vscode.workspace.getConfiguration("keybind-palette-interop");
+  return config.get("commands") as Array<Command>;
 }
 
 interface Command {
