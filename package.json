@@ -3,6 +3,7 @@
   "displayName": "keybind <> command palette",
   "description": "Enables the call of keyboard commands using command palette  ",
   "version": "0.0.1",
+  "publisher": "saif-hakeam",
   "engines": {
     "vscode": "^1.85.0"
   },
