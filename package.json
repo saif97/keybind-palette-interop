@@ -1,8 +1,8 @@
 {
   "name": "keybind-palette-interop",
-  "displayName": "keybind <> command palette",
-  "description": "Enables the call of keyboard commands using command palette  ",
-  "version": "0.0.1",
+  "displayName": "keybind-palette interop",
+  "description": "Enables calling keyboard commands using command palette & vice versa",
+  "version": "0.1.0",
   "publisher": "saif-hakeam",
   "license": "MIT",
   "engines": {
