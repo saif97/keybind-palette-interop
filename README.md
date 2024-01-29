@@ -39,3 +39,5 @@ However, like many other extensions it only offers keyboard shortcuts to call th
     },
 ],
 ```
+
+Now you can call the keybind by `Ctrl+Shift+P` and type `Run Keybind via Command palette`.
