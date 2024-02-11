@@ -4,6 +4,7 @@
   "description": "Enables calling keyboard commands using command palette & vice versa",
   "version": "0.1.1",
   "publisher": "saif-hakeam",
+  "icon": "./icon.png",
   "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
